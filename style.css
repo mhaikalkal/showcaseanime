@@ -1,0 +1,205 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Start Resetter */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* End Resetter */
+
+/* Start Variable */
+:root {
+  /* FONT */
+  --FF: "Poppins", sans-serif;
+  --FW-R: 400;
+  --FW-B: 600;
+  --FW-EB: 800;
+
+  /* Color */
+  --DARK: #333;
+  --LIGHT: whitesmoke;
+  --BD-TEST: solid greenyellow 2px;
+}
+/* End Variable */
+
+body {
+  font-family: var(--FF);
+  background-color: var(--DARK);
+  overflow-x: hidden;
+  color: var(--LIGHT);
+  min-height: 100vh;
+}
+
+/* .logo {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  display: block;
+  z-index: 1000;
+  transition: all 250ms linear;
+} */
+
+nav.container {
+  position: fixed;
+  margin: 0;
+  z-index: 1;
+  border: var(--BD-TEST);
+  /* backdrop-filter: blur(0.5rem); */
+  width: 100%;
+}
+
+nav.container .wrapper {
+  padding: 1rem 1.5rem;
+}
+
+/* karena container main nya dia 100%-2.5rem, artinya kek punya padding sekitar 20 masing-masing sisi */
+/* ditambah padding image juga 1.5rem */
+/* buat purify nya kita kasih margin we lah si logonya biar sejajar sama image*/
+.logo {
+  margin-inline: 20px;
+  border: var(--BD-TEST);
+}
+
+/* purify position fixed nav */
+main {
+}
+
+main.container {
+  display: flex;
+  margin: auto auto;
+  overflow: hidden;
+  width: calc(100% - 2.5rem);
+  /* width: 100%; */
+  border: var(--BD-TEST);
+}
+
+.wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  /* margin-right: -15px;
+  margin-left: -15px; */
+}
+
+.wrapper:hover .section-el {
+  opacity: 0.1;
+}
+
+.section-el {
+  /* width: 100%; */
+  flex: 0 0 33%;
+  max-width: 33%;
+  transition: opacity 250ms linear;
+}
+
+.wrapper .section-el:hover {
+  opacity: 1;
+}
+
+.wrapper-img {
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 1.5rem;
+}
+
+.section-img {
+  display: block;
+  width: 100%;
+  /* height: 80%; */
+  overflow: hidden;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.section-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.25s linear;
+}
+
+.section-el:hover .section-img img {
+  transform: scale(1.2) rotate(-3deg);
+}
+
+.hover-text {
+  /* border: solid 2px salmon; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* karena bukan cuma 1 text element, biar numpuk */
+  height: 100%; /* karena fixed biar bisa full windows, jadi nanti bisa align-items */
+  overflow: hidden;
+  z-index: 100;
+  pointer-events: none;
+
+  display: flex; /* biar bisa ketengah windows */
+  align-items: center;
+  justify-content: center;
+
+  mix-blend-mode: difference;
+}
+
+.hover-text h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 8vw;
+  line-height: 1;
+  color: #fff;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: transform 250ms linear, opacity 250ms ease;
+}
+
+.section-el:hover + .hover-text h2 {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 
+.logo {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  display: block;
+  z-index: 1000;
+  transition: all 250ms linear;
+}
+
+.logo img {
+  height: 26px;
+  width: auto;
+  display: block;
+  transition: filter 250ms 700ms linear;
+} */
+
+@media only screen and (max-width: 1023px) {
+  .section-el {
+    flex: 0 0 50%;
+    max-width: 100%;
+  }
+
+  .hover-text h2 {
+    font-size: 12vw;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .section-el {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .hover-text h2 {
+    font-size: 12vw;
+  }
+}

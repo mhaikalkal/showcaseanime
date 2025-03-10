@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Start Resetter */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* End Resetter */
+
+/* Start Variable */
+:root {
+  /* FONT */
+  --FF: "Poppins", sans-serif;
+  --FW-R: 400;
+  --FW-B: 600;
+  --FW-EB: 800;
+
+  /* Color */
+  --DARK: #333;
+  --LIGHT: whitesmoke;
+  --BD-TEST: solid 3px greenyellow;
+}
+/* End Variable */
+
+body {
+  font-family: var(--FF);
+  background-color: var(--DARK);
+  overflow-x: hidden;
+}
+
+.container {
+  width: calc(100% - 2.5rem);
+  margin: auto auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* gap: 0.5rem; */
+}
+
+/* ketika wrapper di hover, semua img ilang */
+.wrapper:hover .section-el {
+  opacity: 0.1;
+}
+
+/* ketika si img di hover, img yg di hover muncul */
+.wrapper .section-el:hover {
+  opacity: 1;
+}
+
+.section-el {
+  width: 100%;
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.section-img {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  /* display: block; */
+  /* display: flex; */
+}
+
+.section-img img {
+  width: 100%;
+  /* height: auto; */
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform 0.25s linear;
+  /* display: block; */
+}
+
+.section-el:hover .section-img img {
+  transform: scale(1.2) rotate(-3deg);
+}
+
+.hover-text {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 100;
+  display: inline-flex;
+  pointer-events: none;
+}
+
+.hover-text h2 {
+  font-weight: var(--FW-EB);
+  font-size: 10vw;
+  color: var(--LIGHT);
+  opacity: 1;
+  transform: scale(0.8);
+  transition: 0.25s all;
+  margin: 100% auto;
+  /* line-height: 1; */
+}
+
+/* section el dan element selanjutnya */
+.section-el:hover + .hover-text h2 {
+  opacity: 1;
+  transform: scale(1);
+}
