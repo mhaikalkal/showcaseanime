@@ -26,6 +26,7 @@
   --DARK: #333;
   --LIGHT: whitesmoke;
   --BD-TEST: solid greenyellow 2px;
+  --GOLD: rgb(255, 214, 110);
 }
 /* End Variable */
 
@@ -35,58 +36,70 @@ body {
   overflow-x: hidden;
   color: var(--LIGHT);
   min-height: 100vh;
+  /* width: minmax(40rem, 100vw); */
 }
-
-/* .logo {
-  position: fixed;
-  top: 25px;
-  left: 25px;
-  display: block;
-  z-index: 1000;
-  transition: all 250ms linear;
-} */
 
 nav.container {
   position: fixed;
+  top: 0;
+  left: 0;
   margin: 0;
-  z-index: 1;
-  border: var(--BD-TEST);
-  /* backdrop-filter: blur(0.5rem); */
+  z-index: 1000;
+  /* border: var(--BD-TEST); */
+  backdrop-filter: blur(0.5rem);
   width: 100%;
 }
 
 nav.container .wrapper {
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
 }
 
 /* karena container main nya dia 100%-2.5rem, artinya kek punya padding sekitar 20 masing-masing sisi */
 /* ditambah padding image juga 1.5rem */
 /* buat purify nya kita kasih margin we lah si logonya biar sejajar sama image*/
 .logo {
-  margin-inline: 20px;
-  border: var(--BD-TEST);
+  margin: 0 20px 0 20px;
+  /* border: var(--BD-TEST); */
 }
 
-/* purify position fixed nav */
+.logo-link {
+  svg {
+    width: 4rem;
+    height: auto;
+  }
+
+  .logo-svg {
+    fill: var(--GOLD);
+    transition: 0.25s all;
+  }
+}
+
+.logo-link:hover {
+  .logo-svg {
+    fill: #fff;
+    transition: 0.25s all;
+  }
+}
+
+/* purify position fixed nav & centering main */
+/* svg nya si 64px (4rem) */
+/* padding top + bottom + svg-.25rem  */
 main {
+  margin: calc(1.5rem + 1rem + 3.75rem) auto 0 auto;
 }
 
 main.container {
   display: flex;
-  margin: auto auto;
   overflow: hidden;
   width: calc(100% - 2.5rem);
   /* width: 100%; */
-  border: var(--BD-TEST);
+  /* border: var(--BD-TEST); */
 }
 
-.wrapper {
-  display: -ms-flexbox;
+main.container .wrapper {
   display: flex;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  /* margin-right: -15px;
-  margin-left: -15px; */
+  justify-content: space-evenly;
 }
 
 .wrapper:hover .section-el {
@@ -165,24 +178,53 @@ main.container {
   transform: scale(1);
 }
 
-/* 
-.logo {
-  position: fixed;
-  top: 25px;
-  left: 25px;
-  display: block;
-  z-index: 1000;
-  transition: all 250ms linear;
+footer {
+  /* margin-top: 2rem;
+  margin-bottom: 2rem; */
+  /* border: var(--BD-TEST); */
 }
 
-.logo img {
-  height: 26px;
-  width: auto;
+footer.container {
+  padding: calc(3rem - 4px);
+  display: flex;
+  justify-content: center;
+}
+
+footer.container .wrapper {
+  display: inline;
+  text-align: center;
+}
+
+.block {
   display: block;
-  transition: filter 250ms 700ms linear;
-} */
+}
+
+.icon-svg {
+  display: inline-flex;
+  gap: 2rem;
+  margin: 1rem 0 1rem 0;
+}
+
+.icon-link {
+  svg {
+    fill: #000;
+  }
+}
+
+.icon-link:hover,
+.icon-link:focus {
+  svg {
+    fill: var(--LIGHT);
+  }
+}
 
 @media only screen and (max-width: 1023px) {
+  main.container .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
   .section-el {
     flex: 0 0 50%;
     max-width: 100%;
@@ -194,6 +236,22 @@ main.container {
 }
 
 @media only screen and (max-width: 640px) {
+  .logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo-link {
+    svg {
+      width: 3rem;
+      height: auto;
+    }
+  }
+
+  main {
+    margin: calc(1rem + 1rem + 2.95rem) auto 0 auto;
+  }
+
   .section-el {
     flex: 0 0 100%;
     max-width: 100%;
