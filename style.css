@@ -31,6 +31,7 @@
 /* End Variable */
 
 body {
+  position: relative;
   font-family: var(--FF);
   background-color: var(--DARK);
   overflow-x: hidden;
@@ -179,12 +180,12 @@ main.container .wrapper {
 }
 
 footer {
-  /* margin-top: 2rem;
-  margin-bottom: 2rem; */
   /* border: var(--BD-TEST); */
 }
 
 footer.container {
+  /* border: var(--BD-TEST); */
+  position: relative;
   padding: calc(3rem - 4px);
   display: flex;
   justify-content: center;
@@ -208,6 +209,7 @@ footer.container .wrapper {
 .icon-link {
   svg {
     fill: #000;
+    transition: 0.25s all;
   }
 }
 
